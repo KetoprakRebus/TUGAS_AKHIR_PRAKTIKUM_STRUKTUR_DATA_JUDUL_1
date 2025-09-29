@@ -1,38 +1,37 @@
-#include <iostream>
-#include <string>
-using namespace std;
-
-// Fungsi Bubble Sort
-void bubbleSort(string kontak[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (kontak[j] > kontak[j + 1]) {
-                // Tukar posisi kontak
-                string temp = kontak[j];
-                kontak[j] = kontak[j + 1];
-                kontak[j + 1] = temp;
-            }
-        }
-    }
-}
-
-int main() {
-    int n;
-    cout << "Masukkan jumlah kontak: ";
-    cin >> n;
-
-    string kontak[n];
-    for (int i = 0; i < n; i++) {
-        cout << "Nama kontak ke-" << i + 1 << ": ";
-        cin >> kontak[i];
-    }
-
-    bubbleSort(kontak, n);
-
-    cout << "\nDaftar kontak setelah diurutkan (A-Z):\n";
-    for (int i = 0; i < n; i++) {
-        cout << i + 1 << ". " << kontak[i] << endl;
-    }
-
-    return 0;
-}
+#include <iostream> 
+using namespace std; 
+ 
+void tukar(int *x, int *y); 
+ 
+int main() { 
+    int n; 
+    int harga[1005]; 
+ 
+    cout << "Masukkan jumlah barang: "; 
+    cin >> n; 
+ 
+    cout << "Masukkan harga tiap barang:\n"; 
+    for (int i = 0; i < n; i++) { 
+        cin >> harga[i]; 
+    } 
+ 
+    for (int i = 0; i < n - 1; i++) { 
+        for (int j = 0; j < n - i - 1; j++) { 
+            if (harga[j] > harga[j + 1]) { 
+                tukar(&harga[j], &harga[j + 1]); 
+            } 
+        } 
+    } 
+ 
+    cout << "\nDaftar harga barang setelah diurutkan (murah → mahal):\n"; 
+    for (int i = 0; i < n; i++) { 
+        cout << "Rp" << harga[i] << endl; 
+    } 
+    return 0; 
+} 
+ 
+void tukar(int *x, int *y) { 
+    int z = *x; 
+    *x = *y; 
+    *y = z; 
+} 
